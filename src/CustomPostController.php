@@ -18,7 +18,9 @@ class CustomPostController
 
     public static function register(array $args)
     {
-        \register_post_type(static::$slug, $args);
+        add_action('init', function () use ($args) {
+            \register_post_type(static::$slug, $args);
+        });
     }
 
     public static function getListID($status = 'publish', int $count = -1, ?array $args = null)
