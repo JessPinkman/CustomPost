@@ -1,0 +1,19 @@
+{
+  "name": "jesspinkman/custom-post",
+  "description": "Library for custom post support for wordpress",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "JessPinkman",
+      "email": "serge.goncalves@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "CustomPost\\": "/src"
+    }
+  }
+}
