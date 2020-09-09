@@ -26,10 +26,10 @@ class CustomPostController
     public static function getListID($status = 'publish', int $count = -1, ?array $args = null)
     {
         $setup = [
-            'post_type'   => static::$slug,
-            'status'      => $status,
-            'numberposts' => $count,
-            'fields'      => 'ids',
+            'post_type'     => static::$slug,
+            'post_status'   => $status,
+            'numberposts'   => $count,
+            'fields'        => 'ids',
         ];
 
         if ($args) {
