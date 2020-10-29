@@ -5,6 +5,7 @@ namespace CustomPost;
 class CustomPostController
 {
     public static $slug = 'post';
+    public $ID;
 
     public function __construct($id, bool $load_meta = true)
     {
