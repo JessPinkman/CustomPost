@@ -2,6 +2,8 @@
 
 namespace CustomPost;
 
+use WP_Post;
+
 class CustomPostController
 {
     public static $slug = 'post';
@@ -127,13 +129,29 @@ class CustomPostController
         return \is_post_type_archive(static::$slug);
     }
 
-    public function getResponsiveThumbnail(): string
+    public function getThumbnailTag(string $size = 'thumbnail'): string
     {
-        return \get_the_post_thumbnail($this->ID);
+        return \get_the_post_thumbnail($this->ID, $size);
     }
 
     public function getThumbnailID(): int
     {
         return \get_post_thumbnail_id($this->ID);
+    }
+
+    public static function store(array $args): int
+    {
+        $args['post_type'] = static::$slug;
+        return \wp_insert_post($args);
+    }
+
+    public function update(array $args): bool
+    {
+        return \wp_update_post($args) === $this->ID;
+    }
+
+    public function destroy(bool $force = false): bool
+    {
+        return \wp_delete_post($this->ID, $force) instanceof WP_Post;
     }
 }
