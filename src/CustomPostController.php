@@ -85,9 +85,9 @@ class CustomPostController
         return \get_the_post_thumbnail_url($this->ID, $size);
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
-        return get_the_title($this->ID);
+        return get_post_field('post_title', $this->ID);
     }
 
     public function getExcerpt(): string
