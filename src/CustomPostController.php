@@ -139,11 +139,11 @@ class CustomPostController
         return \get_post_thumbnail_id($this->ID);
     }
 
-    public static function store(array $args): self
+    public static function store(array $args): int
     {
         $args['post_type'] = static::$slug;
         $id = \wp_insert_post($args);
-        return new static($id);
+        return $id;
     }
 
     public function update(array $args): bool
